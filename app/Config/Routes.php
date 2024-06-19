@@ -20,6 +20,7 @@ $routes->get('/divisi', 'AdminController::divisi');
 $routes->get('/instansi', 'AdminController::instansi');
 $routes->get('/logout', 'AdminController::logout');
 $routes->get('/daftar-tamu', 'AdminController::daftarTamu');
-$routes->delete('/daftar-tamu/(:num)', 'AdminController::delete_daftar/$1');
+$routes->delete('/daftar-tamu/delete/(:num)', 'AdminController::delete_daftar/$1');
+$routes->get('/daftar-tamu/edit/(:segment)', 'AdminController::edit_daftar/$1');
 $routes->delete('/instansi/(:num)', 'AdminController::delete_instansi/$1');
 $routes->delete('/divisi/(:num)', 'AdminController::delete_divisi/$1');

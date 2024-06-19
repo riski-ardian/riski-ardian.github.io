@@ -195,4 +195,17 @@ class AdminController extends BaseController
 
         return redirect()->to('/divisi');
     }
+
+    public function edit_daftar($id)
+    {
+        $data = [
+            'title' => 'SAKTI Guestbook | Edit Daftar Tamu',
+            'daftardivisi' => $this->divisiModel->findAll(),
+            'validation' => \Config\Services::validation()
+        ];
+
+        return view('pages/admin/daftar-edit', $data);
+    }
+
+
 }
