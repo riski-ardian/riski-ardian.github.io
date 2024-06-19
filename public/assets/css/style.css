@@ -1,0 +1,867 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Protest+Riot&family=Raleway:ital,wght@0,100..900;1,100..900&family=Satisfy&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    font-family: "Poppins";
+}
+
+.loginpage {
+    width: 100%;
+    height: 100vh;
+    background: url('/assets/img/fr13.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.landingpage-header {
+    height: 4rem;
+    padding: 0 1.5rem;
+}
+
+.landingpage-header .h4 {
+    font-family: 'Raleway';
+    font-weight: 700;
+    font-size: 22px;
+}
+
+.landingpage-header img {
+    height: 2.5rem;
+}
+
+.landingpage-loginbtn .btn {
+    padding: 7.5px 15px;
+    background: #ffc300;
+    color: #28282b;
+}
+
+.landingpage-loginbtn i {
+    font-size: 13px;
+}
+
+.landingpage-body {
+    height: calc(100vh - 4rem);
+    /* padding: 2REM 20rem; */
+}
+
+.landingpage-content {
+    /* background: rgba(0,0,0,0.4); */
+    width: 55%;
+}
+
+.landingpage-content h1 {
+    color: ghostwhite;
+    font-size: 46px;
+    font-weight: 700;
+    overflow: hidden;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    height: 75px;
+    position: relative;
+}
+
+.landingpage-content span {
+    color: ghostwhite;
+}
+
+.landingpage-btn {
+    gap: 4rem;
+}
+
+.landingpage-btn .btn {
+    padding: 8px 12px;
+    color: ghostwhite;
+    font-weight: 600;
+    letter-spacing: 1px;   
+}
+
+.landingpage-btn a:first-child {
+    background: darkblue;
+}
+
+.landingpage-btn a:last-child {
+    background: darkred;
+}
+
+.loginpage-main {
+    height: 70vh;
+    width: 100%;
+    position: relative;
+}
+
+.login-form {
+    width: 350px;
+    background: rgba(22, 22, 22, .15);
+    backdrop-filter: blur(5px) saturate(150%);
+    border-radius: 25px;
+    padding: 3rem;
+    color: ghostwhite;
+    border-top: 4px solid white;
+    border-left: 4px solid white;
+    box-shadow: 7px 7px 10px 0px rgba(0,0,0,0.4);
+}
+
+.form-title,
+.form-body,
+.dashboard-title,
+.divisi-title,
+.instansi-title,
+.daftar-title {
+    padding: 1rem;
+}
+
+.form-title .h3 {
+    font-family: 'Raleway';
+    font-weight: 700;
+    letter-spacing: .5px;
+}
+
+.form-body .form-field {
+    outline: none;
+    padding-bottom: 5px;
+    position: relative;
+    margin-bottom: 35px;
+}
+
+/* .form-body .form-field:not(:last-child) {
+    margin-bottom: 35px;
+} */
+
+.form-body .form-field > .form-control {
+    padding-bottom: 2px;
+    padding-right: 2px;
+}
+
+.form-body .input-field i {
+    margin-left: 10px;
+}
+
+.form-body .form-field input {
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    padding-left: 40px;
+    color: ghostwhite;
+}
+
+.form-field input::placeholder {
+    color: ghostwhite;
+    opacity: .4;
+}
+
+.form-body .form-field::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background: ghostwhite;
+}
+
+.login-btn .btn {
+    background: ghostwhite;
+    width: 100%;
+    padding: 10px 0;
+    color: black;
+}
+
+.login-btn .btn:first-child:hover {
+    background: var(--bs-success);
+    color: ghostwhite;
+    transition: all .25s ease-out;
+}
+
+.login-btn .btn:last-child:hover {
+    background: var(--bs-danger);
+    color: ghostwhite;
+    transition: all .25s ease-out;
+}
+
+.form-body a:hover {
+    background: var(--bs-danger);
+    color: ghostwhite;
+}
+
+.dashboard-header {
+    color: ghostwhite;
+    height: 50px;
+}
+
+.dashboard-header .header-title i {
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.dashboard-header .header-title img {
+    height: 30px;
+}
+
+.header-user .searchbox {
+    position: relative;
+}
+
+.header-user .searchbox .search-btn {
+    position: absolute;
+    right: 0;
+    color: gray;
+}
+
+.search-box i {
+    position: absolute;
+    top: 12px;
+    font-size: 14px;
+    right: 235px;
+}
+
+.search-box button {
+    position: absolute;
+    right: 3.5px;
+    top: 3.5px;
+    font-size: 11px;
+}
+
+.search-box input {
+    padding-left: 35px;
+    padding-right: 75px;
+}
+
+.user-active i {
+    font-size: 24px;
+}
+
+.dashboard-body {
+    height: calc(100vh - 50px);
+}
+
+.sidebar {
+    width: 225px;
+    background: var(--bs-dark);
+    transition: .5s all ease-in-out;
+    position: relative;
+    position: sticky;
+}
+
+.close {
+    width: 45px;
+}
+
+.sidebar-menu li:hover {
+    background: var(--bs-primary);
+}
+
+.sidebar-menu {
+    color: ghostwhite;
+    margin-top: 25px;
+}
+
+.sidebar-menu hr {
+    padding: 0 100px;
+}
+
+.sidebar-menu ul {
+    padding: 0;
+    margin-top: 10px;
+}
+
+.sidebar-menu li {
+    list-style: none;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin: 15px 0;
+    font-size: 14px;
+    /* background-color: var(--bs-primary); */
+    padding: .75rem;
+}
+
+.sidebar-menu span {
+    padding-left: 10px;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: .25px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.sidebar-menu i {
+    width: 25px;
+    text-align: center;
+}
+
+.sidebar-menu a {
+    text-decoration: none;
+    color: ghostwhite;
+    list-style: none;
+    letter-spacing: .35px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.logout-btn {
+    color: ghostwhite;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.logout-btn ul {
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+
+.logout-btn li {
+    background: red;
+    padding: 1rem;
+    gap: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.logout-btn li:hover {
+    background: var(--bs-danger);
+}
+
+.logout-btn i {
+    width: 25px;
+    text-align: center;
+}
+
+.logout-btn a {
+    text-decoration: none;
+    color: ghostwhite;
+}
+
+.content {
+    width: 100%;
+}
+
+.content-card .card {
+    width: 250px;
+    height: 115px;
+    font-family: 'Poppins';
+    border: 1px solid black;
+}
+
+.content-card .card-body {
+    line-height: 50px;
+    padding-top: 15px;
+}
+
+.content-card .card-title {
+    font-size: 14px;
+    color: black;
+    font-weight: 600;
+}
+
+.content-card .card-text {
+    font-size: 28px;
+    font-weight: 700;
+    margin-top: 50px;
+
+}
+
+.content-card i {
+    position: absolute;
+    right: 25px;
+    bottom: 25px;
+    font-size: 34px;
+    opacity: .6;
+}
+
+.content-card .col-3:first-child i {
+    color: darkgreen;
+}
+
+.content-card .col-3:nth-child(2) i {
+    color: darkblue;
+}
+
+.content-card .col-3:nth-child(3) i {
+    color: darkred;
+}
+
+.content-card .col-3:last-child i {
+    color: grey;
+}
+
+.formtamu {
+    width: 100%;
+    height: 100vh;
+    background: url('/assets/img/bg1.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.formtamu .card {
+    padding: .5rem 1.5rem;
+    background: rgba(255, 255, 255, 1);
+    height: 85vh;
+}   
+
+.formtamu img {
+    height: 75vh;
+    margin-top: 50px;
+    margin-left: 75px;
+}
+
+.form-body {
+    font-size: 12px;
+}
+
+.formtamu-body .form-field {
+    margin-bottom: 10px;
+    line-height: 35px;
+    position: relative;
+}
+
+.formtamu-body .form-field label {
+    font-size: 14px;
+}
+
+.formtamu .form-field input {
+    background: whitesmoke;
+    border: none;
+    font-size: 14px;
+}
+
+.formtamu-body .selected-option {
+    background: whitesmoke;
+}
+
+.formtamu-body .form-field i {
+    position: absolute;
+    right: 10px;
+    bottom: 7.5px;
+}
+
+.formtamu-body .form-field option {
+    padding: 20px 0;
+}
+
+.formtamu .btn {
+    font-size: 12px;
+    margin: 20px 0;
+    float: right;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100vh;
+    /* background: rgba(0,0,0,0.4); */
+}
+
+.content-wrapper {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    /* background: url('/assets/img/bgg.png');
+    background-color: rgba(255, 255, 255, .4);
+    background-size: cover;
+    background-position: center; */
+}
+
+.content-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    background: url('/assets/img/bgg.png');
+    background-position: center;
+    background-size: cover;
+    opacity: .15;
+}
+
+.content-header {
+    height: 75px;
+    padding: 0 10px;
+    position: relative;
+}
+
+.header-logo img {
+    height: 45px;
+}
+
+.header-logo span {
+    line-height: 20px;
+    font-weight: 600;
+    color: ghostwhite;
+    font-size: 18px;
+}
+
+.vr {
+    margin-top: 10px;
+    height: 45px;
+    width: 1.5px;
+    opacity: .8;
+    color: white;
+}
+
+.user-menu ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding-left: 10px;
+}
+
+.user-menu ul li,
+.admin-menu .list-menu {
+    padding: 3px;
+    position: relative;
+}
+
+.user-menu ul li {
+    margin-right: 25px;
+}
+
+.user-menu ul li a {
+    text-decoration: none;
+    color: ghostwhite;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.user-menu ul li::before,
+.admin-menu .list-menu::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #ffc300;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .3s ease-out;
+}
+
+.user-menu ul li:hover::before,
+.admin-menu .list-menu:hover::before {
+    transform: scaleX(1);
+}
+
+.user-menu ul li a:hover {
+    color: #ffc300;
+}
+
+.admin-btn {
+    position: absolute;
+    right: 50px;
+}
+
+.admin-btn i {
+    font-size: 22px;
+    color: white;
+}
+
+.landingpage-img img {
+    width: 150px;
+}
+
+.landingpage-content {
+    padding: 0 300px;
+}
+
+.landingpage-content .h1 {
+    color: #ffc300;
+}
+
+.landingpage-content span {
+    font-size: 14px;
+}
+
+.content-body .container {
+    height: calc(100vh - 75px);
+}
+
+.saktitruss-form .form-title {
+    background: darkblue;
+}
+
+.saktiglass-form .form-title {
+    background: darkred;
+}
+
+.form-body .row {
+    margin-bottom: 35px;
+}
+
+.form-body label {
+    margin-left: 10px;
+    font-size: 16px;
+    color: black;
+    margin-bottom: 5px;
+    font-family: "Raleway";
+    font-weight: 400;
+}
+
+.form-body span {
+    font-size: 10.5px;
+    color: var(--bs-danger);
+    margin-left: 10px;
+}
+
+.input-field {
+    position: relative;
+}
+
+.form-control:disabled {
+    background: white;
+}
+
+.form-body .form-field i {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    font-size: 18px;
+}
+
+.admin-menu {
+    align-items: center;
+}
+
+.admin-menu ul {
+    margin: 0;
+    padding: 10px 0;
+    list-style: none;
+}
+
+.admin-menu .list-menu,
+.admin-menu .dropdown {
+    margin-right: 30px;
+}
+
+.admin-menu .list-menu a,
+.admin-menu .dropdown .btn {
+    color: whitesmoke;
+    text-decoration: none;
+    border: none;
+}
+.admin-menu .list-menu:hover>a,
+.admin-menu .dropdown:hover>.btn {
+    color: #ffc300;
+}
+
+.admin-menu .dropdown:hover>.dropdown-menu {
+    display: block;
+  }
+
+.admin-menu .dropdown-menu {
+    left: -20px;
+  }
+
+.admin-menu .dropdown-item:hover {
+    background: var(--bs-success);
+    color: white;
+  }
+  
+.admin-user {
+    position: absolute;
+    right: 25px;
+}
+
+.admin-user .btn {
+    border: none;
+    color: white;
+}
+
+.admin-user .btn i {
+    font-size: 22px;
+}
+
+.admin-user .dropdown-item:hover {
+    background: red;
+    color: white;
+}
+
+.dashboard-title {
+    background: var(--bs-primary);
+}
+
+.admin-dashboard .card {
+    height: 125px;
+    border: none;
+}
+
+.admin-dashboard .card i {
+    font-size: 42px;
+    color: white;
+    margin-left: 15px;
+    margin-top: 25px;
+}
+
+.admin-dashboard .card .h5,
+.dashboard-card .card span {
+    font-weight: 700;
+    margin-left: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: whitesmoke;
+}
+
+.admin-dashboard .card .h5 {
+    font-size: 18px;
+}
+
+.dashboard-card .card span {
+    font-size: 42px;
+}
+
+.dashboard-card .top-row .col-4:first-child>.card {
+    background: saddlebrown;
+}
+
+.dashboard-card .top-row .col-4:nth-child(2)>.card {
+    background: navy;
+}
+
+.dashboard-card .top-row .col-4:last-child>.card {
+    background: darkred;
+}
+
+.dashboard-card .bot-row .col-4:first-child>.card,
+.divisi-title {
+    background: darkorange;
+}
+
+.dashboard-card .bot-row .col-4:last-child>.card,
+.instansi-title {
+    background: darkorchid;
+}
+
+.admin-title .card-body {
+    line-height: 45px;
+}
+
+.container-body {
+    padding: 0 3rem;
+}
+
+.divisi-table th:first-child,
+.instansi-table th:first-child {
+    width: 5%;
+}
+
+.divisi-table th:last-child,
+.instansi-table th:last-child {
+    width: 6%;
+}
+
+.divisi-table thead tr,
+.divisi-table tbody tr, 
+.daftar-table thead tr,
+.daftar-table tbody tr {
+    height: 14px;
+}
+
+.divisi-table thead tr th,
+.divisi-table tbody tr th,
+.instansi-table thead tr th,
+.instansi-table tbody tr th,
+.daftar-table thead tr th,
+.daftar-table tbody tr th {
+    text-align: center;
+    font-size: 10px;
+}
+
+.divisi-table .btn-aksi i,
+.instansi-table .btn-aksi i,
+.daftar-table .btn-aksi i {
+    font-size: 14px;
+    width: 20px;
+}
+
+.divisi-table td,
+.daftar-table td,
+.instansi-table td {
+    font-size: 10px;
+    vertical-align: middle;
+}
+
+.btn-aksi {
+    display: inline-flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.daftar-table, 
+.divisi-table, 
+.instansi-table {
+    width: 100%;
+}
+
+.daftar-table thead th:first-child,
+.daftar-table tbody td:first-child {
+    width: 8%;
+}
+
+.daftar-table thead th:nth-child(2),
+.daftar-table tbody td:nth-child(2) {
+    width: 5%;
+}
+
+.daftar-table thead th:nth-child(3),
+.daftar-table tbody td:nth-child(3) {
+    width: 10%;
+}
+
+.daftar-table thead th:nth-child(4),
+.daftar-table tbody td:nth-child(4) {
+    width: 10%;
+}
+
+.daftar-table thead th:nth-child(5),
+.daftar-table tbody td:nth-child(5) {
+    width: 10%;
+}
+
+.daftar-table thead th:nth-child(6),
+.daftar-table tbody td:nth-child(6) {
+    width: 17%;
+}
+
+.daftar-table thead th:nth-child(9),
+.daftar-table tbody td:nth-child(9),
+.daftar-table thead th:last-child,
+.daftar-table tbody td:last-child {
+    width: 2.5%;
+}
+
+.daftar-title {
+    background: chocolate;
+}
+
+.btn-vr {
+    height: 20px;
+    width: 1px;
+    background: black;
+}
+
+.page-link {
+    font-size: 12px;
+    padding: 5px 10px;
+}
+
+.pagination {
+    padding: 0;
+}
+
+.daftar-table button,
+.instansi-table button,
+.divisi-table button {
+    border: none;
+    background: transparent;
+}
