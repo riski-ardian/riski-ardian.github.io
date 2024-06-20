@@ -95,6 +95,17 @@
         </script>
     <?php endif; ?>
 
+    <!-- Flash data untuk notifikasi update -->
+    <?php if (session()->getFlashdata('updated')) : ?>
+        <script>
+            Swal.fire({
+                title: "Berhasil!",
+                text: "<?= session()->getFlashdata('updated') ?>",
+                icon: "success"
+            });
+        </script>
+    <?php endif; ?>
+
 
 
 </body>

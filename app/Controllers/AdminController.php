@@ -30,7 +30,7 @@ class AdminController extends BaseController
             'title' => 'SAKTI Guestbook | Admin Login'
         ];
 
-        return view('pages/admin/login', $data);
+        return view('pages/admin/login/login', $data);
     }
 
     public function save_login()
@@ -81,7 +81,7 @@ class AdminController extends BaseController
             'userLogin' => session()->get('nama')
         ];
 
-        return view('pages/admin/divisi', $data);
+        return view('pages/admin/view/divisi', $data);
     }
 
     public function instansi()
@@ -94,7 +94,7 @@ class AdminController extends BaseController
             'currentPage' => $this->request->getVar('page_tbl_instansi') ? (int) $this->request->getVar('page_tbl_instansi') : 1
         ];
 
-        return view('pages/admin/instansi', $data);
+        return view('pages/admin/view/instansi', $data);
     }
 
 
@@ -112,7 +112,7 @@ class AdminController extends BaseController
             'userLogin' => session()->get('nama')
         ];
 
-        return view('pages/admin/dashboard', $data);
+        return view('pages/admin/view/dashboard', $data);
     }
 
     public function logout()
@@ -160,7 +160,7 @@ class AdminController extends BaseController
             $daftarTamu = $daftarModel->paginate(10, 'tbl_tamu');
         }
 
-        return view('/pages/admin/daftar-tamu', $data);
+        return view('/pages/admin/view/daftar-tamu', $data);
     }
 
     public function delete_daftar($id)
@@ -200,12 +200,49 @@ class AdminController extends BaseController
     {
         $data = [
             'title' => 'SAKTI Guestbook | Edit Daftar Tamu',
-            'daftardivisi' => $this->divisiModel->findAll(),
+            // 'daftardivisi' => $this->divisiModel->findAll(),
             'validation' => \Config\Services::validation()
         ];
 
-        return view('pages/admin/daftar-edit', $data);
+        return view('pages/admin/edit/daftar-edit', $data);
     }
 
+    public function edit_divisi($id)
+    {
+        $data = [
+            'title' => 'SAKTI Guestbook | Edit Daftar Divisi',
+            'daftardivisi' => $this->divisiModel->find($id),
+            'validation' => \Config\Services::validation(),
+            'userLogin' => session()->get('nama')
+        ];
 
+        return view('pages/admin/edit/divisi-edit', $data);
+    }
+
+    public function update_divisi($id)
+    {
+        // Validate the input
+        if (!$this->validate([
+            'nama_divisi' => [
+                'rules' => 'required|is_unique[tbl_divisi.nama_divisi,id,{id}]',
+                'errors' => [
+                    'required' => 'Nama Tidak Boleh Kosong. Silahkan Diisi Terlebih Dahulu.',
+                    'is_unique' => 'Nama Divisi Sudah Ada. Silahkan Diisi Dengan Yang Lain.'
+                ]
+            ]
+        ])) {
+            return redirect()->to("/divisi/edit/$id")->withInput()->with('validation', \Config\Services::validation());
+        }
+
+        // Save the data
+        $this->divisiModel->save([
+            'id' => $id,
+            'nama_divisi' => $this->request->getVar('nama_divisi')
+        ]);
+
+        // Set a flashdata message
+        session()->setFlashdata('updated', 'Data berhasil diubah.');
+
+        return redirect()->to('/divisi');
+    }
 }

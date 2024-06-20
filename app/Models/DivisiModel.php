@@ -7,5 +7,5 @@ use CodeIgniter\Model;
 class DivisiModel extends Model
 {
     protected $table = 'tbl_divisi';
-    protected $allowedFields = ['divisi'];
+    protected $allowedFields = ['nama_divisi'];
 }

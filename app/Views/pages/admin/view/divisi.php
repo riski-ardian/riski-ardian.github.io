@@ -24,7 +24,7 @@
                                 <th scope="row"><?= $no++; ?></th>
                                 <td><?= esc($div['nama_divisi']); ?></td>
                                 <td class="text-center btn-aksi">
-                                    <a class="btn-edit text-primary" href=""><i class="fa fa-pencil"></i></a>
+                                    <a class="btn-edit text-primary" href="/divisi/edit/<?= $div['id']; ?>"><i class="fa fa-pencil"></i></a>
                                     <div class="btn-vr"></div>
                                     <form id="form-delete-<?= $div['id'] ?>" action="/divisi/<?= $div['id'] ?>" method="post" class="d-inline">
                                         <?= csrf_field(); ?>
