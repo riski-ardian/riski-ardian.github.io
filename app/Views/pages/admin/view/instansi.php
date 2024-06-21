@@ -24,7 +24,7 @@
                                 <th scope="row"><?= $no++; ?></th>
                                 <td><?= esc($ins['nama_instansi']); ?></td>
                                 <td class="text-center btn-aksi">
-                                    <a class="btn-edit text-primary" href=""><i class="fa fa-pencil"></i></a>
+                                    <a class="btn-edit text-primary" href="/instansi/edit/<?= $ins['id']; ?>"><i class="fa fa-pencil"></i></a>
                                     <div class="btn-vr"></div>
                                     <form id="form-delete-<?= $ins['id'] ?>" action="/instansi/<?= $ins['id'] ?>" method="post" class="d-inline">
                                         <?= csrf_field(); ?>

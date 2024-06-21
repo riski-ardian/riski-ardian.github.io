@@ -77,8 +77,10 @@ class AdminController extends BaseController
     {
         $data = [
             'title' => 'SAKTI Guestbook | Daftar Divisi',
-            'divisi' => $this->divisiModel->findAll(),
-            'userLogin' => session()->get('nama')
+            'divisi' => $this->divisiModel->paginate(10, 'tbl_divisi'),
+            'userLogin' => session()->get('nama'),
+            'pager' => $this->divisiModel->pager,
+            'currentPage' => $this->request->getVar('page_tbl_divisi') ? (int) $this->request->getVar('page_tbl_divisi') : 1
         ];
 
         return view('pages/admin/view/divisi', $data);
@@ -234,15 +236,50 @@ class AdminController extends BaseController
             return redirect()->to("/divisi/edit/$id")->withInput()->with('validation', \Config\Services::validation());
         }
 
-        // Save the data
         $this->divisiModel->save([
             'id' => $id,
             'nama_divisi' => $this->request->getVar('nama_divisi')
         ]);
 
-        // Set a flashdata message
         session()->setFlashdata('updated', 'Data berhasil diubah.');
 
         return redirect()->to('/divisi');
+    }
+
+    public function edit_instansi($id)
+    {
+        $data = [
+            'title' => 'SAKTI Guestbook | Edit Daftar Instansi',
+            'daftarinstansi' => $this->instansiModel->find($id),
+            'validation' => \Config\Services::validation(),
+            'userLogin' => session()->get('nama')
+        ];
+
+        return view('pages/admin/edit/instansi-edit', $data);
+    }
+
+    public function update_instansi($id)
+    {
+        // Validate the input
+        if (!$this->validate([
+            'nama_instansi' => [
+                'rules' => 'required|is_unique[tbl_instansi.nama_instansi,id,{id}]',
+                'errors' => [
+                    'required' => 'Nama Tidak Boleh Kosong. Silahkan Diisi Terlebih Dahulu.',
+                    'is_unique' => 'Nama Instansi Sudah Ada. Silahkan Diisi Dengan Yang Lain.'
+                ]
+            ]
+        ])) {
+            return redirect()->to("/instansi/edit/$id")->withInput()->with('validation', \Config\Services::validation());
+        }
+
+        $this->instansiModel->save([
+            'id' => $id,
+            'nama_instansi' => $this->request->getVar('nama_instansi')
+        ]);
+
+        session()->setFlashdata('updated', 'Data berhasil diubah.');
+
+        return redirect()->to('/instansi');
     }
 }

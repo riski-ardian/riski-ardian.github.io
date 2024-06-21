@@ -36,6 +36,9 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+
+                <?= $pager->links('tbl_divisi', 'daftar_pager') ?>
+
             </div>
 
         </div>
