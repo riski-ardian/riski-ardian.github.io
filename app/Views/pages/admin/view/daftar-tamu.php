@@ -8,7 +8,7 @@
             <h1 class="h4 m-0">Daftar Tamu</h1>
         </div>
         <form action="" method="get">
-            <div class="search-box mb-3 position-relative">
+            <!-- <div class="search-box mb-3 position-relative">
                 <div class="row justify-content-end">
                     <div class="col-3">
                         <i class="fa-solid fa-magnifying-glass"></i>
@@ -16,7 +16,7 @@
                         <button class="btn btn-primary" type="submit">Search</button>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </form>
         <table class="table daftar-table table-bordered table-hover">
             <thead class="table-dark">
@@ -45,10 +45,10 @@
                         <td><?= esc($dt['company']); ?></td>
                         <td>
 
-                            <a class="btn-edit text-primary" href=""><i class="fa fa-pencil"></i></a>
+                            <a class="btn-edit text-primary" href="/daftar-tamu/edit/<?= $dt['id']; ?>"><i class="fa fa-pencil"></i></a>
                         </td>
                         <td>
-                            <form id="form-delete-<?= $dt['id'] ?>" action="/daftar-tamu/<?= $dt['id'] ?>" method="post" class="d-inline">
+                            <form id="form-delete-<?= $dt['id'] ?>" action="/daftar-tamu/delete/<?= $dt['id'] ?>" method="post" class="d-inline">
                                 <?= csrf_field(); ?>
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button class="btn-delete text-danger" type="button"><i class="fa fa-trash" onclick="confirmDelete('form-delete-<?= $dt['id'] ?>')"></i></button>

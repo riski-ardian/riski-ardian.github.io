@@ -106,7 +106,17 @@
         </script>
     <?php endif; ?>
 
-
+    <?php if (session()->has('added')) : ?>
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: "<?= session()->getFlashdata('added') ?>",
+                showConfirmButton: false,
+                timer: 3500
+            });
+        </script>
+    <?php endif; ?>
 
 </body>
 

@@ -26,7 +26,7 @@
                                 <td class="text-center btn-aksi">
                                     <a class="btn-edit text-primary" href="/instansi/edit/<?= $ins['id']; ?>"><i class="fa fa-pencil"></i></a>
                                     <div class="btn-vr"></div>
-                                    <form id="form-delete-<?= $ins['id'] ?>" action="/instansi/<?= $ins['id'] ?>" method="post" class="d-inline">
+                                    <form id="form-delete-<?= $ins['id'] ?>" action="/instansi/delete/<?= $ins['id'] ?>" method="post" class="d-inline">
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <button class="btn-delete text-danger" type="button"><i class="fa fa-trash" onclick="confirmDelete('form-delete-<?= $ins['id'] ?>')"></i></button>

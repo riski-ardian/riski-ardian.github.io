@@ -86,6 +86,39 @@ class AdminController extends BaseController
         return view('pages/admin/view/divisi', $data);
     }
 
+    public function tambah_divisi()
+    {
+        $data = [
+            'title' => 'SAKTI Guestbook | Form Tambah Divisi',
+            'userLogin' => session()->get('nama'),
+        ];
+
+        return view('pages/admin/edit/tambah-divisi', $data);
+    }
+
+    public function simpan_divisi()
+    {
+        if (!$this->validate([
+            'nama_divisi' => [
+                'rules' => 'required|is_unique[tbl_divisi.nama_divisi,id,{id}]',
+                'errors' => [
+                    'required' => 'Nama Tidak Boleh Kosong. Silahkan Diisi Terlebih Dahulu.',
+                    'is_unique' => 'Nama Divisi Sudah Ada. Silahkan Diisi Dengan Yang Lain.'
+                ]
+            ]
+        ])) {
+            return redirect()->to("/tambah-divisi")->withInput()->with('validation', \Config\Services::validation());
+        }
+
+        $this->divisiModel->save([
+            'nama_divisi' => $this->request->getVar('nama_divisi')
+        ]);
+
+        session()->setFlashdata('added', 'Data berhasil ditambah.');
+
+        return redirect()->to('/divisi');
+    }
+
     public function instansi()
     {
         $data = [
@@ -198,17 +231,6 @@ class AdminController extends BaseController
         return redirect()->to('/divisi');
     }
 
-    public function edit_daftar($id)
-    {
-        $data = [
-            'title' => 'SAKTI Guestbook | Edit Daftar Tamu',
-            // 'daftardivisi' => $this->divisiModel->findAll(),
-            'validation' => \Config\Services::validation()
-        ];
-
-        return view('pages/admin/edit/daftar-edit', $data);
-    }
-
     public function edit_divisi($id)
     {
         $data = [
@@ -281,5 +303,73 @@ class AdminController extends BaseController
         session()->setFlashdata('updated', 'Data berhasil diubah.');
 
         return redirect()->to('/instansi');
+    }
+
+    public function edit_daftar($id)
+    {
+        $data = [
+            'title' => 'SAKTI Guestbook | Edit Daftar Tamu',
+            'daftartamu' => $this->daftarModel->find($id),
+            'validation' => \Config\Services::validation(),
+            'userLogin' => session()->get('nama'),
+            'instansi' => $this->instansiModel->findAll(),
+            'daftardivisi' => $this->divisiModel->findAll(),
+        ];
+
+        return view('pages/admin/edit/daftar-edit', $data);
+    }
+
+    public function update_daftar($id)
+    {
+        if (!$this->validate([
+            'nama_tamu' => [
+                'rules' => 'required|min_length[3]',
+                'errors' => [
+                    'required' => 'Nama Tidak Boleh Kosong. Silahkan Diisi Terlebih Dahulu.',
+                    'min_length' => 'Nama Tidak Boleh Kurang dari 3 Huruf.'
+                ]
+            ],
+            'asal_instansi' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Asal Instansi Tidak Boleh Kosong. Silahkan Diisi Terlebih Dahulu.'
+                ]
+            ],
+            'divisi' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Divisi Tidak Boleh Kosong. Silahkan Diisi Terlebih Dahulu.'
+                ]
+            ],
+            'keperluan' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Keperluan Tidak Boleh Kosong. Silahkan Diisi Terlebih Dahulu.'
+                ]
+            ],
+
+        ])) {
+            return redirect()->to("/daftar-tamu/edit/$id")->withInput()->with('validation', \Config\Services::validation());
+        }
+
+        $this->daftarModel->save([
+            'id' => $id,
+            'nama' => $this->request->getVar('nama_tamu'),
+            'asal' => $this->request->getVar('asal_instansi'),
+            'divisi' => $this->request->getVar('divisi'),
+            'keperluan' => $this->request->getVar('keperluan'),
+            'keterangan' => $this->request->getVar('keterangan'),
+            'company' => $this->request->getVar('company'),
+        ]);
+
+        $instansiExist = $this->instansiModel->where('nama_instansi', $this->request->getVar('asal_instansi'))->first();
+
+        if (!$instansiExist) {
+            $this->instansiModel->save(['nama_instansi' => $this->request->getVar('asal_instansi')]);
+        }
+
+        session()->setFlashdata('updated', 'Data berhasil diupdate.');
+
+        return redirect()->to('/daftar-tamu');
     }
 }
